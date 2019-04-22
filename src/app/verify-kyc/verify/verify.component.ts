@@ -10,8 +10,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class VerifyComponent implements OnInit {
 
-  message = null;
+  success = null;
   error = null;
+  submitted = false;
   regulatorBody: FormGroup;
   kycDetails: any;
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
@@ -61,7 +62,7 @@ export class VerifyComponent implements OnInit {
   verifyKYC(data) {
     this.__apiService.executeVerifyKyc(this.regulatorBody.value, data).subscribe(
       result => {
-        this.__dialogRef.close(true);
+        this.success = result.data;
       },
       error => {
         this.error = error;
