@@ -49,12 +49,13 @@ export class RegulatorUiComponent implements OnInit {
   }
 
   submitRegulatory() {
-    console.log(this.regulatorBody.valid);
+    this.error = null;
+    this.success = null;
     const value = this.regulatorBody.value;
-    console.log(value);
     this.__apiService.submitKyc(value).subscribe(
       data => {
         this.success = data.data;
+        this.regulatorBody.reset();
       },
       error => {
         this.error = error;
