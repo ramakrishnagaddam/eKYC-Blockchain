@@ -1,4 +1,10 @@
 <div class="container">
+    <div class="alert alert-success" *ngIf="success !== null">
+      {{success}}
+    </div>
+    <div class="alert alert-danger" *ngIf="error !== null">
+      {{error}}
+    </div>
     <form [formGroup]="regulatorBody" (ngSubmit)="submitRegulatory()">
       <div class="form-group row">
         <div class="col">
